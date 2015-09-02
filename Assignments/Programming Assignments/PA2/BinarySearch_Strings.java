@@ -1,0 +1,33 @@
+//-----------------------------------------------------------------------------
+// BinarySearch_Strings.java
+//-----------------------------------------------------------------------------
+
+public class BinarySearch_Strings {
+
+   // binarySearch()
+   // pre: Array A[p..r] is sorted
+   public static String binarySearch(String[] A, int p, int r,  String target){
+      int q;
+      if(p > r) {
+         return -1;
+      }else{
+         q = (p+r)/2;
+         if(target.compareTo(A[q])== 0){
+            return q;
+         }else if(target.compareTo(A[q]) < 0){
+            return binarySearch(A, p, q-1, target);
+         }else{ // target > A[q]
+            return binarySearch(A, q+1, r, target);
+         }
+      }
+   }
+
+   public static void main(String[] args) {
+
+      int[] B = {1,2,3,4,5,6,7,8,9,10};
+
+      System.out.println(binarySearch(B, 0, B.length-1, 7));
+      System.out.println(binarySearch(B, 0, B.length-1, 2));
+      System.out.println(binarySearch(B, 0, B.length-1, 11));
+   }
+}
